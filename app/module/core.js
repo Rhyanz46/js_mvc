@@ -37,8 +37,5 @@ switch(window.location.pathname){
         break;
 }
 
-setTimeout(()=>{
-    var waw = dom_app.getElementsByTagName("script");
-    // console.log(waw[0]);
-    document.body.append(waw[0])
-}, 200)
+    // var waw = dom_app.getElementsByTagName("script")[0];
+    // alldom.parentNode.removeChild(new)
