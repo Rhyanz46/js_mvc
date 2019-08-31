@@ -8,7 +8,7 @@ function template_loader(nama){
     return false
 }
 
-async function render(nama_template){
+async function render(nama_template, fn=undefined){
     if (await template_loader(nama_template)){
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = await function() {
@@ -23,6 +23,9 @@ async function render(nama_template){
         xmlHttp.open("GET", root + '/templates' + nama_template, true); // true for asynchronous
         xmlHttp.send(null);
     }
+    if(fn != undefined){
+        fn()
+    }
 }
 
 switch(window.location.pathname){
@@ -30,7 +33,10 @@ switch(window.location.pathname){
         render('/index.ian');
         break;
     case '/hello':
-        render('/bio.ian');
+        let test= function hello(){
+            alert("hello, saya adalah bio")
+        }
+        render('/bio.ian', test);
         break;
     default:
         render('/404.ian')
